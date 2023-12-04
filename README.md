@@ -11,11 +11,6 @@ docker run -dt --name myftp palw3ey/ye3ftp
 docker exec -it myftp sh --login -c "mgmt"
 ```
 
-# GNS3
-
-To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://raw.githubusercontent.com/palw3ey/ye3ftp/master/ye3ftp.gns3a)
-
-
 # Test
 
 -	On the host
@@ -39,6 +34,11 @@ cat test.txt
 # Verify, on Windows
 type test.txt
 ```
+
+# GNS3
+
+To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://raw.githubusercontent.com/palw3ey/ye3ftp/master/ye3ftp.gns3a)
+
 # Environment Variables
 
 These are the env variables and their default values.  
