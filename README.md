@@ -80,6 +80,9 @@ cat test.txt
 type test.txt
 ```
 
+On Windows, the ftp command in the terminal do not support the passive option nor the SSL option.  
+To connect using these options you can use Windows explorer or the CURL command.
+
 # GNS3
 
 To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://raw.githubusercontent.com/palw3ey/ye3ftp/master/ye3ftp.gns3a)
