@@ -123,6 +123,25 @@ docker build --no-cache --network=host -t ye3ftp .
 docker run -dt --name my_customized_ftp ye3ftp
 ```
 
+# Documentation
+
+[vsftpd man page](https://linux.die.net/man/5/vsftpd.conf)
+
+# Version
+
+| name | version |
+| :- |:- |
+|ye3ftp | 1.0.0 |
+|vsftpd | 3.0.5 |
+|alpine | 3.18.4 |
+
+# ToDo
+
+- need to document env variables
+- add more translation files in i18n folder. Contribute ! Send me your translations by mail ;)
+
+Don't hesitate to send me your contributions, issues, improvements on github or by mail
+
 # License
 
 MIT  
