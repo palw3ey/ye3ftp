@@ -4,12 +4,50 @@ A docker FTP server based on vsftpd and Alpine. Light, below 10 Mb. GNS3 ready.
 
 The /data folder is persistent, default login: tux/1234
 
-# Quickstart
+# Simple usage
 
 ```bash
 docker run -dt --name myftp palw3ey/ye3ftp
 docker exec -it myftp sh --login -c "mgmt"
 ```
+
+# Advanced usage
+
+- Map to a host folder
+```bash
+docker run -dt --name myftp \
+  -v /home/{YOUR_USERNAME}/Downloads:/data/tux \
+  -e Y_USER=tux \
+  -e Y_PASSWORD=strongPassword \
+  palw3ey/ye3ftp
+```
+
+- Use the host Let's Encrypt certificates for SSL
+```bash
+docker run -dt --name myftp \
+  --net=host \
+  -e Y_PORT=1022 \
+  -e Y_SSL=yes \
+  -v /etc/letsencrypt/live/{YOUR_DOMAIN}/fullchain.pem:/etc/vsftpd/fullchain.pem \
+  -v /etc/letsencrypt/live/{YOUR_DOMAIN}/privkey.pem:/etc/vsftpd/privkey.pem \
+  -e Y_USER=tux \
+  -e Y_PASSWORD=strongPassword \
+  palw3ey/ye3ftp
+```
+
+- Configure port and passive port to match your needs and according to your firewall rules
+```bash
+docker run -dt --name myftp \
+  --net=host \
+  -e Y_PORT=1022 \
+  -e Y_PASV_ADDRESS={YOUR_HOST_IP} \
+  -e Y_PASV_MIN=40001 \
+  -e Y_PASV_MAX=41000 \
+  -e Y_USER=tux \
+  -e Y_PASSWORD=strongPassword \
+  palw3ey/ye3ftp
+```
+You can use "-p 1022:22" instead of "--net=host -e Y_PORT=1022", but in a PSAV scenario you will have to map every port from PASV_MIN to PASV_MAX, these -p option will create a lot of iptables rules and docker processes.
 
 # Test
 
