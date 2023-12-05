@@ -81,7 +81,8 @@ type test.txt
 ```
 
 On Windows, the ftp command in the terminal do not support the passive option nor the SSL option.  
-To connect using these options you can use Windows explorer or the CURL command.
+To connect using these options you can use Windows explorer or the CURL command.  
+For advanced use, prefer WinSCP or FileZilla.
 
 # GNS3
 
@@ -143,7 +144,7 @@ docker run -dt --name my_customized_ftp ye3ftp
 - need to document env variables
 - add more translation files in i18n folder. Contribute ! Send me your translations by mail ;)
 
-Don't hesitate to send me your contributions, issues, improvements on github or by mail
+Don't hesitate to send me your contributions, issues, improvements on github or by mail.
 
 # License
 
