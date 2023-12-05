@@ -13,6 +13,11 @@ docker exec -it myftp sh --login -c "mgmt"
 
 # Advanced usage
 
+- Add a user
+```bash
+docker exec -it myftp sh --login -c "mgmt --action=add --user=tux2 --password=1234"
+```
+
 - Map to a host folder
 ```bash
 docker run -dt --name myftp \
