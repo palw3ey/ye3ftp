@@ -16,7 +16,9 @@ docker exec -it myftp sh --login -c "mgmt"
 - Map to a host folder
 ```bash
 docker run -dt --name myftp \
-  -v /home/{YOUR_USERNAME}/Downloads:/data/tux \
+  --net=host \
+  -e Y_PORT=1022 \
+  -v /home/{YOUR_USERNAME}/Documents:/data/tux \
   -e Y_USER=tux \
   -e Y_PASSWORD=strongPassword \
   palw3ey/ye3ftp
@@ -35,7 +37,7 @@ docker run -dt --name myftp \
   palw3ey/ye3ftp
 ```
 
-- Configure port and passive port to match your needs and according to your firewall rules
+- Configure passive port to match your needs and according to your firewall rules
 ```bash
 docker run -dt --name myftp \
   --net=host \
