@@ -104,7 +104,7 @@ These are the env variables and their default values.
 |Y_GID | number | 1000 | The GID to use for all FTP users |
 |Y_PERMISSION | permission | 0775 | *file_open_mode* |
 |Y_INDIVIDUAL_FOLDER | yes/no | yes | yes, All user use a personal folder. |
-|Y_PASV | yes/no | yes | yes, to enable PASV. *pasv_enable*  |
+|Y_PASV | yes/no | yes | yes, to enable PASV.  |
 |Y_PASV_ADDRESS | ip address |  | *pasv_address* |
 |Y_PASV_MIN | port number | 0 | *pasv_min_port* |
 |Y_PASV_MAX | port number | 0 | *pasv_max_port* |
@@ -112,7 +112,7 @@ These are the env variables and their default values.
 |Y_ANONYMOUS_WRITE | yes/no | no | yes, to allow anonymous to write|
 |Y_SSL | yes/no | no | yes, to enable SSL. Require /etc/vsftpd/fullchain.pem and /etc/vsftpd/privkey.pem |
 |Y_SSL_FORCE | yes/no | no | yes, to allow only SSL connections | 
-|Y_SSL_IMPLICIT | yes/no | no | *implicit_ssl* |
+|Y_SSL_IMPLICIT | yes/no | no | yes, to enable implicit SSL |
 
 # Build
 
