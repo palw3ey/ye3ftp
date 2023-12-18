@@ -84,6 +84,11 @@ docker run -dt --name myftp \
 ```
 You can use "-p 1022:22" instead of "--net=host -e Y_PORT=1022", but in a PSAV scenario you will have to map every port from PASV_MIN to PASV_MAX, these -p option will create a lot of iptables rules and docker processes.
 
+- Use CURL to get file through FTP, allowing PASV and SSL
+```bash
+curl ftp://tux:1234@192.168.9.151:21/test.txt --ssl-reqd -T test.txt
+```
+
 # GNS3
 
 To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://raw.githubusercontent.com/palw3ey/ye3ftp/master/ye3ftp.gns3a)
