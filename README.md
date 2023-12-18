@@ -11,7 +11,35 @@ docker run -dt --name myftp palw3ey/ye3ftp
 docker exec -it myftp sh --login -c "mgmt"
 ```
 
-# Advanced usage
+# Test
+
+-	On the host
+
+```bash
+# create a test file :
+docker exec -it myftp sh --login -c "echo it_works > /data/test.txt"
+```
+
+-   On a Linux or Windows client  
+
+```bash
+ftp
+  open 192.168.9.151 21
+  get test.txt
+  quit
+
+# Verify, on Linux
+cat test.txt
+
+# Verify, on Windows
+type test.txt
+```
+
+On Windows, the ftp command in the terminal do not support the passive option nor the SSL option.  
+To connect using these options you can use Windows explorer or the CURL command.  
+For advanced use, prefer WinSCP or FileZilla.
+
+# HOWTOs
 
 - Add a user
 ```bash
@@ -56,34 +84,6 @@ docker run -dt --name myftp \
 ```
 You can use "-p 1022:22" instead of "--net=host -e Y_PORT=1022", but in a PSAV scenario you will have to map every port from PASV_MIN to PASV_MAX, these -p option will create a lot of iptables rules and docker processes.
 
-# Test
-
--	On the host
-
-```bash
-# create a test file :
-docker exec -it myftp sh --login -c "echo it_works > /data/test.txt"
-```
-
--   On a Linux or Windows client  
-
-```bash
-ftp
-  open 192.168.9.151 21
-  get test.txt
-  quit
-
-# Verify, on Linux
-cat test.txt
-
-# Verify, on Windows
-type test.txt
-```
-
-On Windows, the ftp command in the terminal do not support the passive option nor the SSL option.  
-To connect using these options you can use Windows explorer or the CURL command.  
-For advanced use, prefer WinSCP or FileZilla.
-
 # GNS3
 
 To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://raw.githubusercontent.com/palw3ey/ye3ftp/master/ye3ftp.gns3a)
@@ -92,28 +92,27 @@ To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://
 
 These are the env variables and their default values.  
 
-| variables | format | default |
-| :- |:- |:- |
-|Y_LANGUAGE | text | fr_FR |
-|Y_DEBUG | yes/no | no |
-|Y_IP | IP address | 0.0.0.0 |
-|Y_PORT | port number | 21 |
-|Y_USER | username | tux |
-|Y_PASSWORD | password | 1234 |
-|Y_UID | number | 1000 |
-|Y_GID | number | 1000 |
-|Y_PERMISSION | permission | 0775 |
-|Y_INDIVIDUAL_FOLDER | yes/no | yes |
-|Y_PASV | yes/no | yes |
-|Y_PASV_ADDRESS | ip address |  |
-|Y_PASV_MIN | port number | 0 |
-|Y_PASV_MAX | port number | 0 |
-|Y_ANONYMOUS | yes/no | no |
-|Y_ANONYMOUS_WRITE | yes/no | no |
-|Y_SSL | yes/no | no |
-|Y_SSL_FORCE | yes/no | no |
-|Y_SSL_IMPLICIT | yes/no | no |
-|Y_DEBUG | yes/no | no |
+| variables | format | default | description |
+| :- |:- |:- |:- |
+|Y_LANGUAGE | text | fr_FR | Language. The list is in the folder /i18n/ |
+|Y_DEBUG | yes/no | no | yes, Run vsftpd with debug option |
+|Y_IP | IP address | 0.0.0.0 | IP address to listen to |
+|Y_PORT | port number | 21 | Port to listen to |
+|Y_USER | username | tux | The user to create |
+|Y_PASSWORD | password | 1234 | The password for the user |
+|Y_UID | number | 1000 | The UID to use for all FTP users |
+|Y_GID | number | 1000 | The GID to use for all FTP users |
+|Y_PERMISSION | permission | 0775 | *file_open_mode* |
+|Y_INDIVIDUAL_FOLDER | yes/no | yes | yes, All user use a personal folder. |
+|Y_PASV | yes/no | yes | yes, to enable PASV. *pasv_enable*  |
+|Y_PASV_ADDRESS | ip address |  | *pasv_address* |
+|Y_PASV_MIN | port number | 0 | *pasv_min_port* |
+|Y_PASV_MAX | port number | 0 | *pasv_max_port* |
+|Y_ANONYMOUS | yes/no | no | yes, to allow anonymous logins. Anonymous usernames are : ftp and anonymous |
+|Y_ANONYMOUS_WRITE | yes/no | no | yes, to allow anonymous to write|
+|Y_SSL | yes/no | no | yes, to enable SSL. Require /etc/vsftpd/fullchain.pem and /etc/vsftpd/privkey.pem |
+|Y_SSL_FORCE | yes/no | no | yes, to allow only SSL connections | 
+|Y_SSL_IMPLICIT | yes/no | no | *implicit_ssl* |
 
 # Build
 
@@ -141,7 +140,7 @@ docker run -dt --name my_customized_ftp ye3ftp
 
 # ToDo
 
-- need to document env variables
+- ~~need to document env variables~~ (2023-12-18)
 - add more translation files in i18n folder. Contribute ! Send me your translations by mail ;)
 
 Don't hesitate to send me your contributions, issues, improvements on github or by mail.
