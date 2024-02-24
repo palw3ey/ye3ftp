@@ -1,6 +1,7 @@
 # ye3ftp
 
-A docker FTP server based on vsftpd and Alpine. Light, below 10 Mb. GNS3 ready.
+A docker FTP server based on vsftpd and Alpine. Light, below 15 Mb. GNS3 ready.  
+A FTP client is also included, the command is : lftp
 
 The /data folder is persistent, default login: tux/1234
 
@@ -25,6 +26,7 @@ docker exec -it myftp sh --login -c "echo it_works > /data/test.txt"
 ```bash
 ftp
   open 192.168.9.151 21
+  login tux 1234
   get test.txt
   quit
 
@@ -89,6 +91,12 @@ You can use "-p 1022:22" instead of "--net=host -e Y_PORT=1022", but in a PSAV s
 curl ftp://tux:1234@192.168.9.151:21/test.txt --ssl-reqd -T test.txt
 ```
 
+- Use the FTP Client to connect to an FTP Server
+```bash
+lftp user:password@FTP_server:FTP_port
+ls
+```
+
 # GNS3
 
 To run through GNS3, download and import the appliance : [ye3ftp.gns3a](https://raw.githubusercontent.com/palw3ey/ye3ftp/master/ye3ftp.gns3a)
@@ -146,10 +154,19 @@ docker run -dt --name my_customized_ftp ye3ftp
 
 | name | version |
 | :- |:- |
-|ye3ftp | 1.0.0 |
+|ye3ftp | 1.0.1 |
 |vsftpd | 3.0.5 |
 |alpine | 3.18.4 |
 
+# Changelog
+## [1.0.1] - 2024-02-24
+### Added
+- FTP Client : lftp
+- A Changelog in README.md, using this syntax : [keepachangelog.com](https://keepachangelog.com/en/1.1.0/)
+## [1.0.0] - 2023-12-04
+### Added
+- first release
+  
 # ToDo
 
 - ~~need to document env variables~~ (2023-12-18)
