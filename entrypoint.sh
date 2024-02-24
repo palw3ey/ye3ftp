@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# LABEL name="ye3ftp" version="1.0.0" author="palw3ey" maintainer="palw3ey" email="palw3ey@gmail.com" website="https://github.com/palw3ey/ye3ftp" license="MIT" create="20231204" update="20231204"
+# LABEL name="ye3ftp" version="1.0.1" author="palw3ey" maintainer="palw3ey" email="palw3ey@gmail.com" website="https://github.com/palw3ey/ye3ftp" license="MIT" create="20231204" update="20240224"
 
 # Entrypoint for docker
 
@@ -12,13 +12,15 @@ f_log() {
 
 # ============ [ internationalisation ] ============
 
-if [[ -f /i18n/$Y_LANGUAGE.sh ]]; then
-	f_log "i18n $Y_LANGUAGE"
+# load default language
+source /i18n/fr_FR.sh
+
+# override with choosen language
+if [[ $Y_LANGUAGE != "fr_FR" ]] && [[ -f /i18n/$Y_LANGUAGE.sh ]] ; then
 	source /i18n/$Y_LANGUAGE.sh
-else
-	f_log "i18n fr_FR"
-	source /i18n/fr_FR.sh
 fi
+
+f_log "i18n : $Y_LANGUAGE"
 
 # ============ [ general configuration ] ============
 
