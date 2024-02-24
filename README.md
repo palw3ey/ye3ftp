@@ -136,7 +136,7 @@ These are the env variables and their default values.
 
 # Build
 
-To customize and create your own images.
+To customize and create your own images. Or simply create an image compatible with your operating system architecture.
 
 ```bash
 git clone https://github.com/palw3ey/ye3ftp.git
