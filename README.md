@@ -134,6 +134,20 @@ These are the env variables and their default values.
 |Y_SSL_FORCE | yes/no | no | yes, to allow only SSL connections | 
 |Y_SSL_IMPLICIT | yes/no | no | yes, to enable implicit SSL |
 
+# Compatibility
+
+The docker image was compiled to work on these CPU architectures :
+
+- linux/386
+- linux/amd64
+- linux/arm/v6
+- linux/arm/v7
+- linux/arm64
+- linux/ppc64le
+- linux/s390x
+
+Work on most computers including Raspberry Pi
+
 # Build
 
 To customize and create your own images. Or simply create an image compatible with your operating system architecture.
