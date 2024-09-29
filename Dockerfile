@@ -2,6 +2,7 @@ FROM alpine:latest
 
 MAINTAINER palw3ey <palw3ey@gmail.com>
 LABEL name="ye3ftp" version="1.0.1" author="palw3ey" maintainer="palw3ey" email="palw3ey@gmail.com" website="https://github.com/palw3ey/ye3ftp" license="MIT" create="20231204" update="20240224" description="A docker FTP server based on vsftpd and Alpine. Below 15 Mb. GNS3 ready." usage="docker run -dt palw3ey/ye3ftp" tip="The folder /data is persistent, default login: tux/1234" 
+LABEL org.opencontainers.image.source=https://github.com/palw3ey/ye3ftp
 
 ENV Y_LANGUAGE=fr_FR \
 	Y_DEBUG=no \
