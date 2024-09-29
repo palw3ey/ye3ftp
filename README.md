@@ -1,6 +1,6 @@
 # ye3ftp
 
-A docker FTP server based on vsftpd and Alpine. Light, below 15 Mb. GNS3 ready.  
+A container FTP server based on vsftpd and Alpine. Light, below 15 Mb. GNS3 ready.  
 A FTP client is also included, the command is : lftp
 
 The /data folder is persistent, default login: tux/1234
@@ -170,7 +170,7 @@ docker run -dt --name my_customized_ftp ye3ftp
 | :- |:- |
 |ye3ftp | 1.0.1 |
 |vsftpd | 3.0.5 |
-|alpine | 3.18.4 |
+|alpine | 3.20.3 |
 
 # Changelog
 ## [1.0.1] - 2024-02-24
